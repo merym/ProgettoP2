@@ -25,4 +25,6 @@ protected:
       else
         return 1; //se non esce 0, non si ottiene un critico; quindi il moltiplicatore restituito � 1
     }
+public:
+    DpsInterface(int pc): probCritico(pc) {}
 };

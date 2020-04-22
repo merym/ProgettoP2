@@ -2,9 +2,9 @@
 
 class MagicInterface: virtual public Personaggio{
 private:
-	static int maxMana;	//mana disponibile all'inizio dello scontro per ogni mago (massimo) -> usato da increaseLevel() -> aumenta col livello
+    int maxMana;	//mana disponibile all'inizio dello scontro per ogni mago (massimo) -> usato da increaseLevel() -> aumenta col livello
 
-	int mana = maxMana;	//mana che si aggiorna ogni volta che si lancia un'abilità; inizialmente uguale a maxMana
+    int mana;	//mana che si aggiorna ogni volta che si lancia un'abilità; inizialmente uguale a maxMana
 
 protected:
 	//usato da increaselevel
@@ -30,6 +30,8 @@ protected:
     */
 
 public:
+    MagicInterface(int m): maxMana(m), mana(m) {}
+
 	int getMaxMana() const {return maxMana;}
 
 	int getMana() const {return mana;}
@@ -50,4 +52,4 @@ public:
 		mana = maxMana;
 	}
 };
-int MagicInterface::maxMana = 100;
+//int MagicInterface::maxMana = 100;
