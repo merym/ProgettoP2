@@ -1,3 +1,5 @@
+#include "Modello/Interfacce/dpsInterface.cpp"
+
 //derivazione non virtual
 class Arciere: public DpsInterface{
   private:

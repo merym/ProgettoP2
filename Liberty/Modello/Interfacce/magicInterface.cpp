@@ -14,7 +14,7 @@ protected:
 
 	//usato da increaselevel
 	virtual void increaseMaxHealth(){
-        maxHealth += 10*getLevel();	//getMaxHealth ? altrimenti come accedo al campo
+        maxHealth = getMaxHealth() + 10*getLevel();	//getMaxHealth ? altrimenti come accedo al campo
 	}
 
 	//usato da increaselevel
@@ -34,11 +34,8 @@ public:
 
 	virtual void IncreaseLevel(const int& newExpPoint){
 		if(newExpPoint + getExpPoint() >= soglia){ //soglia da definire
-            setLevel(1);
+            Personaggio::increaseLevel(newExpPoint);
   			increaseMaxMana();
-  			increaseMaxHealth();
-  			increaseArmor();
-  			increaseAttack();
 		} else
 			resetMana();
 	}
@@ -60,5 +57,3 @@ public:
 	}
 };
 int MagicInterface::maxMana = 100;
-
-// getMaxHealth(): come facciamo ad aumentare la vita iniziale (massima) da una classe derivata se non possiamo accedere al campo privato di Personaggio()?

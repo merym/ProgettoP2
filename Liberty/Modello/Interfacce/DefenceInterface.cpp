@@ -1,4 +1,5 @@
 #include "personaggio.cpp"
+
 class DefenceInterface: virtual public Personaggio{
 private:
     int turni;
