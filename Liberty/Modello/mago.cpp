@@ -1,3 +1,5 @@
+#include "Modello/Interfacce/magicInterface.cpp"
+
 class Mago: public MagicInterface{
 private:	//meglio cosi o come parametro di ogni funzione? il costo in mana non cambia, secondo me meglio metterle statiche
 	static int costoManaAbilita1;

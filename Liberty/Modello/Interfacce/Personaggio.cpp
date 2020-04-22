@@ -2,77 +2,77 @@
 
 class Personaggio{
   private:
-    unsigned int MaxHealth;
-    unsigned int Health;
-  	int BaseAttack;
-  	int Level;
-  	int Exppoint;
-  	int Armor;
+    unsigned int maxHealth;
+    unsigned int health;
+    int baseAttack;
+    int level;
+    int expPoint;
+    int armor;
 
     //proposta da healInterf-> aggiungere un campo bool Dead x controllare stato, (hp==0? true : false)
-    bool Dead;
+    bool dead;
   protected:
-    virtual void IncreaseMaxhealth(); //usato da increaselevel, RESETTA ANCHE HEALTH AL MAX VALUE
-    virtual void IncreaseArmor(); //usato da increaselevel
-  	virtual void IncreaseAttack(); //usato da increaselevel
-  	void SetLevel(const int& newLevel){
+    virtual void increaseMaxhealth(); //usato da increaselevel, RESETTA ANCHE HEALTH AL MAX VALUE
+    virtual void increaseArmor(); //usato da increaselevel
+    virtual void increaseAttack(); //usato da increaselevel
+    void setLevel(const int& newLevel){
   		level += newLevel;
   	} //usato da increaselevel (serve ad accedere al campo privato)
 
-    void SetHealth(const int& Damage){//proposta da healInterf:(int+)= guarigione; (int-)=colpo subito; 0=Dead==true
-        Health+=Damage;
-        if(Health==0){
+    void setHealth(const int& damage){//proposta da healInterf:(int+)= guarigione; (int-)=colpo subito; 0=Dead==true
+        health+=damage;
+        if(health==0){
             kill();
         }
     }
 
-    int ReducedDamageWithArmor(const int& Damage) const{ //restituisce il danno ridotto dall'armatura (in defence interface usa maxarmor, invece che armor)
-        return Damage- (Damage*Armor)/100;
+    int reducedDamageWithArmor(const int& damage) const{ //restituisce il danno ridotto dall'armatura (in defence interface usa maxarmor, invece che armor)
+        return damage - (damage*armor)/100;
     }
 
     //proposta da healIntef
     //per riportare in vita un personaggio, va chiamato DURANTE UNA BATTAGLIA
     void resurrect(){
-        Dead=false;
+        dead=false;
     }
     //per uccidere un personaggio dopo setHealth
     void kill(){
-        Dead=true;
+        dead=true;
     }
 
   public:
   	Personaggio();
   	virtual ~Personaggio()=0;
-    int GetHealth() const{return Health;}
-    int GetMaxHealth() const{return MaxHealth;}
-    int GetBaseAttack() const{return BaseAttack;}
-    int GetLevel() const{return Level;}
-    int GetExppoint() const{return Exppoint;}
-    int GetArmor() const{return Armor;}
+    int getHealth() const{return health;}
+    int getMaxHealth() const{return maxHealth;}
+    int getBaseAttack() const{return baseAttack;}
+    int getLevel() const{return level;}
+    int getExpPoint() const{return expPoint;}
+    int getArmor() const{return armor;}
 
     //proposta da healInterf->per modificare i campi specifici delle interfaccie deve essere virtuale! && potrebbe ritornare se è avvenuto o no un cambio lvl wt a BOOL
-    virtual bool IncreaseLevel(const int& newExpPoint){//newExpPoint guadagnati dalla vittoria della battaglia
-        if(newExpPoint + GetExppoint() >= soglia){
-            SetLevel(1);
-            IncreaseAttack();
-            IncreaseArmor();
-            IncreaseMaxhealth();
+    virtual bool increaseLevel(const int& newExpPoint){//newExpPoint guadagnati dalla vittoria della battaglia
+        if(newExpPoint + getExpPoint() >= soglia){
+            setLevel(1);
+            increaseAttack();
+            increaseArmor();
+            increaseMaxhealth();
         }
     }
 
-    void ReceiveDamage(const int& Damage){//utilizza SetHealth e ReducedDamageWithArmor -> varia in base al personaggio; per diminuire HP (hp=hp-damage) tramite setHP
-        Damage= (-1)*ReducedDamageWithArmor(Damage);
-        SetHealth(Damage);
+    void receiveDamage(const int& damage){//utilizza SetHealth e ReducedDamageWithArmor -> varia in base al personaggio; per diminuire HP (hp=hp-damage) tramite setHP
+        damage= (-1)*reducedDamageWithArmor(damage);
+        setHealth(damage);
     }
 
     //proposte da healInterf
-    bool getDeathState()const {return Dead;}//in lettura, per il controller
+    bool getDeathState()const {return dead;}//in lettura, per il controller
 
     //gain=hp guarita, divineIntervention=is a REZ or NOT
-    void ReceiveHealing(const int & Gain, bool DivineIntervention=false){//chiamato da controller (O da contenitore?) per aumentare Health (hp= hp+gain) tramite setHP
-        if(Dead==DivineIntevention){//valori concordanti, guarigione NORM o REZ
-            SetHealth(gain);
-            if(Dead)
+    void receiveHealing(const int & gain, bool divineIntervention=false){//chiamato da controller (O da contenitore?) per aumentare Health (hp= hp+gain) tramite setHP
+        if(dead==divineIntervention){//valori concordanti, guarigione NORM o REZ
+            setHealth(gain);
+            if(dead)
                 resurrect();
         }
         else{//valori discordanti

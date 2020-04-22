@@ -1,3 +1,5 @@
+#include "personaggio.cpp"
+
 class MagicInterface: virtual public Personaggio{
 private:
 	static int maxMana;	//mana disponibile all'inizio dello scontro per ogni mago (massimo) -> usato da increaseLevel() -> aumenta col livello
@@ -12,7 +14,7 @@ protected:
 
 	//usato da increaselevel
 	virtual void increaseMaxHealth(){
-		MaxHealth += 10*getLevel();	//getMaxHealth ? altrimenti come accedo al campo 
+        maxHealth += 10*getLevel();	//getMaxHealth ? altrimenti come accedo al campo
 	}
 
 	//usato da increaselevel
@@ -32,7 +34,7 @@ public:
 
 	virtual void IncreaseLevel(const int& newExpPoint){
 		if(newExpPoint + getExpPoint() >= soglia){ //soglia da definire
-  			SetLevel(1);
+            setLevel(1);
   			increaseMaxMana();
   			increaseMaxHealth();
   			increaseArmor();

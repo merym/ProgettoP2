@@ -27,18 +27,19 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         Vista/mainwindow.cpp \
-        Modello/Interfacce/defenceInterface.cpp \
-        Modello/Interfacce/dpsInterface.cpp \
         Modello/Interfacce/healInterface.cpp \
         Modello/Interfacce/magicInterface.cpp \
         Modello/Interfacce/personaggio.cpp \
-        Modello/arciere.cpp \
-        Modello/soldato.cpp \
         Modello/guaritore.cpp \
-        Modello/mago.cpp
+        Modello/mago.cpp \
+    Modello/arciere.cpp \
+    Modello/soldato.cpp \
+    Modello/Interfacce/dpsInterface.cpp \
+    Modello/Interfacce/defenceInterface.cpp
 
 HEADERS += \
-        Vista/mainwindow.h
+        Vista/mainwindow.h \
+    Modello/Interfacce/defenceinterface.h
 
 FORMS += \
         Vista/mainwindow.ui
