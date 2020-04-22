@@ -2,13 +2,13 @@
 
 class MagicInterface: virtual public Personaggio{
 private:
-    int maxMana;	//mana disponibile all'inizio dello scontro per ogni mago (massimo) -> usato da increaseLevel() -> aumenta col livello
+    unsigned int maxMana;	//mana disponibile all'inizio dello scontro per ogni mago (massimo) -> usato da increaseLevel() -> aumenta col livello
 
-    int mana;	//mana che si aggiorna ogni volta che si lancia un'abilità; inizialmente uguale a maxMana
+    unsigned  int mana;	//mana che si aggiorna ogni volta che si lancia un'abilità; inizialmente uguale a maxMana
 
 protected:
 	//usato da increaselevel
-    virtual void increaseMaxMana(int addVal){
+    virtual void increaseMaxMana(unsigned int addVal){
         maxMana += addVal;
 	}
 
@@ -30,20 +30,20 @@ protected:
     */
 
 public:
-    MagicInterface(int m): maxMana(m), mana(m) {}
+    MagicInterface(unsigned int m): maxMana(m), mana(m) {}
 
-	int getMaxMana() const {return maxMana;}
+    unsigned int getMaxMana() const {return maxMana;}
 
-	int getMana() const {return mana;}
+    unsigned int getMana() const {return mana;}
 
-	bool isThrowable(const int& m) const{ //controlla se il mago ha il mana necessario per lanciare l'abilità
+    bool isThrowable(unsigned int m) const{ //controlla se il mago ha il mana necessario per lanciare l'abilità
   		if(mana < m)
   			return false;
   		return true;
   	}
 
 	//aggiorna il mana dopo il lancio di un'abilità
-	void setMana(const int& m){	
+    void setMana(unsigned int m){
 		mana -= m;
 	}
 

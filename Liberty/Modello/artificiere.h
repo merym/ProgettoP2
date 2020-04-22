@@ -3,8 +3,6 @@
 
 #include "Interfacce/dpsInterface.cpp"
 #include "Interfacce/magicInterface.cpp"
-#include "Interfacce/personaggio.cpp"
-
 
 class Artificiere : public DpsInterface, public MagicInterface{
 public:

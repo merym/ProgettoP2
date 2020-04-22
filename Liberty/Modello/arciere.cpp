@@ -3,7 +3,7 @@
 //derivazione non virtual
 class Arciere: public DpsInterface{
 protected:
-    bool increaseLevel(const int& newExpPoint){//newExpPoint guadagnati dalla vittoria della battaglia
+    bool increaseLevel(unsigned int newExpPoint){//newExpPoint guadagnati dalla vittoria della battaglia
       if(newExpPoint + getExpPoint() >= 100){
         Personaggio::increaseLevel(newExpPoint);
         increaseMaxHealth(getMaxHealth()+5*getLevel());
