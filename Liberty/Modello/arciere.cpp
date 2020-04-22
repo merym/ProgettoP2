@@ -6,16 +6,16 @@ class Arciere: public DpsInterface{
     Arciere(); //i dati come: vita, armor ecc. sono inizializzati nel costruttore che utilizza per� quello della classe personaggio
     ~Arciere();
     int frecciaAppuntita(){
-      return 5*critico();
+      return 2*getBaseAttack()*critico()+getLevel();
     }
 
     //IL fatto di impedire di usare un metodo per un tot di turni si fa con la GUI
 
     int frecciaInfuocata(){
-      return 8*critico();
+      return 3*getBaseAttack()*critico()+getLevel();
     }
 
     int frecciaPesante(){
-      return 7*critico();
+      return 2*getBaseAttack()*critico()+getLevel()*2;
     }
 };
