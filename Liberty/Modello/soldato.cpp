@@ -8,16 +8,16 @@ class Soldato: public DpsInterface{
     Soldato(); //i dati come: vita, armor ecc. sono inizializzati nel costruttore che utilizza per� quello della classe personaggio
     ~Soldato();
     int pugnoFurtivo(){
-      return 4*critico();
+      return 2*getBaseAttack()*critico()+getLevel();
     }
 
     //IL fatto di impedire di usare un metodo per un tot di turni si fa con la GUI
 
     int fendente(){
-      return 6*critico();
+      return (3*getBaseAttack()*critico()+getLevel())+3;
     }
 
     int coltellata(){
-      return 9*critico();
+      return 2*getBaseAttack()*critico()+getLevel()*3;
     }
 };
