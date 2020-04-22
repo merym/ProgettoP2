@@ -60,7 +60,7 @@ class Personaggio{
         }
     }
 
-    void receiveDamage(const int& damage){//utilizza SetHealth e ReducedDamageWithArmor -> varia in base al personaggio; per diminuire HP (hp=hp-damage) tramite setHP
+    void receiveDamage(int damage){//utilizza SetHealth e ReducedDamageWithArmor -> varia in base al personaggio; per diminuire HP (hp=hp-damage) tramite setHP
         damage= (-1)*reducedDamageWithArmor(damage);
         setHealth(damage);
     }

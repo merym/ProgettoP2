@@ -2,6 +2,18 @@
 
 
 class Guaritore: public HealInterface{
+protected:
+    virtual void increaseMaxhealth(){
+        //posso accedere solo in lettura al campo!
+    }
+    virtual void increaseArmor(){
+        //idem
+    }
+    virtual void increaseAttack(){
+        //idem
+    }
+
+
 public:
 
     /*prima ipotesi
@@ -17,7 +29,7 @@ public:
             prayForBlessing();
         }
         else{
-            int smite=blessing *(getLevel()/2);//guaritore prende BIG gains in poco tempo, x paladino può essere +lvl invece?
+            int smite=getBlessing() *(getLevel()/2);//guaritore prende BIG gains in poco tempo, x paladino può essere +lvl invece?
             resetBlessing();
             return smite;
         }

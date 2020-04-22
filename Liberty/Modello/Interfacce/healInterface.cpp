@@ -5,13 +5,17 @@ private:
     int blessing; //parte da lvl-1, aumenta per ogni turno di attacco SEMPLICE durante una BATTAGLIA
 
 protected:
-    virtual void prayForBlessing(){//chiamato da attacco semplice, aumenta di un unità
+    virtual void prayForBlessing(){//chiamato da azione determinata da classe derivata, aumenta blessing
         blessing++;
     }
 
-    virtual int askForBlessing(){//chiamato per fare il reset del blessing, una volta "usato"
-        int result=blessing;
+    void resetBlessing(){
         blessing=getLevel()-1; // da personaggio
+    }
+
+    virtual int askForBlessing(){//chiamato per usare il blessing accumulato e fare il reset del blessing
+        int result=blessing;
+        resetBlessing();
         return result;
     }
 
@@ -24,9 +28,10 @@ public:
         return blessing;
     }
 
-    virtual increaseLevel(const int & newExpPoints){
-        Pesonaggio::increaseLevel(newExpPoints);//do as normal
+    virtual bool increaseLevel(const int & newExpPoints){
+        bool result= Personaggio::increaseLevel(newExpPoints);//do as normal
         increaseBlessing();//chiama reset con NEWLevel, in entrambi i casi riporta a "zero" il blessing per la prossima BATTAGLIA
+        return result;
     }
 
     /* prima ipotesi
@@ -47,6 +52,5 @@ public:
             return smite;
         }
     }
-
 
 };
