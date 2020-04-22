@@ -15,6 +15,7 @@ protected:
       if(probCritico>2)
         probCritico--;
     }
+
     int critico() const{
       //la prossima riga serve per i numeri random
       srand(time(NULL));
@@ -25,6 +26,7 @@ protected:
       else
         return 1; //se non esce 0, non si ottiene un critico; quindi il moltiplicatore restituito � 1
     }
+
 public:
-    DpsInterface(int pc): probCritico(pc) {}
+    DpsInterface(XXXXXXXX,int pc): Personaggio(XXXXX), probCritico(pc) {}
 };
