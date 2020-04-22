@@ -25,18 +25,6 @@ protected:
   		baseAttack = getBaseAttack() + 8*getLevel();
   	} 
 
-  	virtual int reducedDamageWithArmor(const int& damage) const{
-  		damage -= (damage*getArmor())/100;	//danno ridotto dall'armatura in percentuale. Esempio: damage = 80 e armor = 20 -> 80 - (80*20)/100 = 80 - 20% = 64
-  	}
-
-  	void setHealth(const int& damage){ //aggiorno health dopo aver subito l'attacco
-  		health = getHealth() - damage;
-  	}
-
-  	void setHealthHeal(const int& heal){ //aggiorno health dopo il lancio dell'abilità2
-  		health = getHealth() + heal;
-  	}
-
 public:
 	int getMaxMana() const {return maxMana;}
 
@@ -62,12 +50,6 @@ public:
 	//aggiorna il mana dopo il lancio di un'abilità
 	void setMana(const int& m){	
 		mana -= m;
-	}
-
-	//subisco l'attacco, quindi aggiorno la vita col danno ridotto in base all'armor
-	void ReceiveDamage(const int& damage){
-		damage = reducedDamageWithArmor(damage);
-		setHealth(damage);
 	}
 
 	//per ripristinare il mana alla fine di uno scontro, anche se non è aumentato di livello
