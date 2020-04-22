@@ -8,11 +8,12 @@ private:
 
 protected:
 	//usato da increaselevel
-	virtual void increaseMaxMana(){
-		maxMana += 20*getLevel();
+    virtual void increaseMaxMana(int addVal){
+        maxMana += addVal;
 	}
 
-	//usato da increaselevel
+    /*
+    //usato da increaselevel
 	virtual void increaseMaxHealth(){
         maxHealth = getMaxHealth() + 10*getLevel();	//getMaxHealth ? altrimenti come accedo al campo
 	}
@@ -26,19 +27,12 @@ protected:
   	virtual void increaseAttack(){
   		baseAttack = getBaseAttack() + 8*getLevel();
   	} 
+    */
 
 public:
 	int getMaxMana() const {return maxMana;}
 
 	int getMana() const {return mana;}
-
-	virtual void IncreaseLevel(const int& newExpPoint){
-		if(newExpPoint + getExpPoint() >= soglia){ //soglia da definire
-            Personaggio::increaseLevel(newExpPoint);
-  			increaseMaxMana();
-		} else
-			resetMana();
-	}
 
 	bool isThrowable(const int& m) const{ //controlla se il mago ha il mana necessario per lanciare l'abilità
   		if(mana < m)

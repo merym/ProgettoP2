@@ -35,11 +35,13 @@ SOURCES += \
     Modello/arciere.cpp \
     Modello/soldato.cpp \
     Modello/Interfacce/dpsInterface.cpp \
-    Modello/Interfacce/defenceInterface.cpp
+    Modello/Interfacce/defenceInterface.cpp \
+    Modello/artificiere.cpp
 
 HEADERS += \
         Vista/mainwindow.h \
-    Modello/Interfacce/defenceinterface.h
+    Modello/Interfacce/defenceinterface.h \
+    Modello/artificiere.h
 
 FORMS += \
         Vista/mainwindow.ui

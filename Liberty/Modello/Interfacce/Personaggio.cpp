@@ -1,4 +1,5 @@
 #include <iostream>
+#include <QString>
 
 class Personaggio{
   private:
@@ -8,25 +9,26 @@ class Personaggio{
     int level;
     int expPoint;
     int armor;
+    static QString tipoPersonaggio;
 
     //proposta da healInterf-> aggiungere un campo bool Dead x controllare stato, (hp==0? true : false)
     bool dead;
   protected:
-    virtual void increaseMaxhealth(); //usato da increaselevel, RESETTA ANCHE HEALTH AL MAX VALUE
-    virtual void increaseArmor(); //usato da increaselevel
-    virtual void increaseAttack(); //usato da increaselevel
+    void increaseMaxHealth(int addVal){ maxHealth+= addVal; health=maxHealth;} //usato da increaselevel, RESETTA ANCHE HEALTH AL MAX VALUE
+    void increaseArmor(int addVal){ armor+= addVal;} //usato da increaselevel
+    void increaseAttack(int addVal){ baseAttack+= addVal;} //usato da increaselevel
     void setLevel(const int& newLevel){
   		level += newLevel;
   	} //usato da increaselevel (serve ad accedere al campo privato)
 
     void setHealth(const int& damage){//proposta da healInterf:(int+)= guarigione; (int-)=colpo subito; 0=Dead==true
-        health+=damage;
+        health=(unsigned int) (health + damage);
         if(health==0){
             kill();
         }
     }
 
-    int reducedDamageWithArmor(const int& damage) const{ //restituisce il danno ridotto dall'armatura (in defence interface usa maxarmor, invece che armor)
+    virtual int reducedDamageWithArmor(const int& damage) const{ //restituisce il danno ridotto dall'armatura (in defence interface usa maxarmor, invece che armor)
         return damage - (damage*armor)/100;
     }
 
@@ -43,8 +45,9 @@ class Personaggio{
   public:
   	Personaggio();
   	virtual ~Personaggio()=0;
-    int getHealth() const{return health;}
-    int getMaxHealth() const{return maxHealth;}
+    QString getTipoPersonaggio()const{ return tipoPersonaggio;}
+    unsigned int getHealth() const{return health;}
+    unsigned int getMaxHealth() const{return maxHealth;}
     int getBaseAttack() const{return baseAttack;}
     int getLevel() const{return level;}
     int getExpPoint() const{return expPoint;}
@@ -52,11 +55,8 @@ class Personaggio{
 
     //proposta da healInterf->per modificare i campi specifici delle interfaccie deve essere virtuale! && potrebbe ritornare se è avvenuto o no un cambio lvl wt a BOOL
     virtual bool increaseLevel(const int& newExpPoint){//newExpPoint guadagnati dalla vittoria della battaglia
-        if(newExpPoint + getExpPoint() >= soglia){
+        if(newExpPoint + getExpPoint() >= 100){
             setLevel(1);
-            increaseAttack();
-            increaseArmor();
-            increaseMaxhealth();
         }
     }
 

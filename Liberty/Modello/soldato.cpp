@@ -2,7 +2,21 @@
 
 //derivazione non virtual
 class Soldato: public DpsInterface{
-  private:
+protected:
+    //NB: metti valori x soldato (non per arcere)
+    bool increaseLevel(const int& newExpPoint){//newExpPoint guadagnati dalla vittoria della battaglia
+        if(newExpPoint + getExpPoint() >= 100){
+            Personaggio::increaseLevel(newExpPoint);
+            increaseMaxHealth(getMaxHealth()+5*getLevel());
+            increaseArmor(getArmor()+3*getLevel());
+            increaseAttack(getBaseAttack()+6*getLevel());
+            increaseProbCritico();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
   public:
     Soldato(); //i dati come: vita, armor ecc. sono inizializzati nel costruttore che utilizza per� quello della classe personaggio

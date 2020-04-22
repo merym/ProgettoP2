@@ -8,24 +8,7 @@ private:
     //se all'inizio � 5, la prob. di ottenere un critico � 1/5, diminuendolo aumenta la probabilit�
     int probCritico;
 protected:
-    virtual void increaseMaxHealth(){
-        maxHealth=maxHealth+5*getLevel();
-    }
-    virtual void increaseArmor(){
-        armor=armor+3*getLevel();
-      }
-    virtual void increaseAttack(){
-        baseAttack=baseAttack+6*getLevel();
-    }
-    void increaseLevel(const int& newExpPoint){//newExpPoint guadagnati dalla vittoria della battaglia
-      if(newExpPoint + getExppoint() >= soglia){
-        setLevel(1);
-        increaseMaxHealth();
-        increaseArmor();
-        increaseAttack();
-        increaseProbCritico();
-      }
-    }
+
     //il metodo per aumentare la probabilit� si chiama INCREASE anche se di fatto decrementa il parametro per farlo.
     void increaseProbCritico(){
       //Check (utile?)

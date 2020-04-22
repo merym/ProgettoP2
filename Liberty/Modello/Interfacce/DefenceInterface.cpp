@@ -3,8 +3,13 @@
 class DefenceInterface: virtual public Personaggio{
 private:
     int turni;
-    int maxArmor;
+    unsigned int maxArmor;
 protected:
+
+    virtual unsigned int reducedDamageWithArmor(unsigned int damage) const {
+        return damage - (damage*maxArmor)/100;
+    }
+
     virtual void incrementaTurni(){
       turni=3;
     }
@@ -16,9 +21,10 @@ protected:
         setMaxArmor(getArmor());
         }
     }
-    void setMaxArmor(const int& arm){
+    void setMaxArmor(unsigned int arm){
         maxArmor=arm;
     }
+
 public:
     //incrementa l'armatura, se non � disponibile l'abilit� (Turni !=0) restituisce false, altrimenti true
     virtual bool buffArmor(){
