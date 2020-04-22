@@ -1,4 +1,4 @@
-#include "healinterface.cpp"
+#include "Modello/Interfacce/healInterface.cpp"
 
 class Guaritore: public HealInterface{
 public:
