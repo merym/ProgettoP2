@@ -37,7 +37,6 @@ SOURCES += \
         Modello/guaritore.cpp \
         Modello/mago.cpp
 
-
 HEADERS += \
         Vista/mainwindow.h
 

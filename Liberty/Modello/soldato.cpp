@@ -1,5 +1,5 @@
 //derivazione non virtual
-class Soldato: public DPS{
+class Soldato: public DpsInterface{
   private:
   	
   public:

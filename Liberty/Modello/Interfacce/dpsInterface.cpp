@@ -1,7 +1,7 @@
 #include <cstdlib> //per rand()
 #include <ctime> //per time()
 
-class DPS: virtual public personaggio{
+class DpsInteface: virtual public personaggio{
   private:
   	//ProbCritico diminuisce all'aumentare del livello del personaggio --> aumenta la probabilità di effettuare un colpo critico
   	//se all'inizio è 5, la prob. di ottenere un critico è 1/5, diminuendolo aumenta la probabilità

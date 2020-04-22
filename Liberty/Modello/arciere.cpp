@@ -1,5 +1,5 @@
 //derivazione non virtual
-class Arciere: public DPS{
+class Arciere: public DpsInterface{
   private:
   	
   public:
