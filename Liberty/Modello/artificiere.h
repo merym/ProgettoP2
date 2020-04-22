@@ -16,7 +16,7 @@ public:
     ~Artificiere() {}
 
 protected:
-    bool increaseLevel(const int& newExpPoint);
+    virtual bool increaseLevel(unsigned int newExpPoint) override;
 };
 
 #endif // ARTIFICIERE_H
