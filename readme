@@ -1,1 +1,24 @@
+NB: -se ho scordato di scrivere cosa da fare aggiungete pure
+    -se ho scritto male scusate la dislessia =P
 
+Da fare entro Lunedì:
+-dividere le classi nei file .h e .cpp (header & source)
+-correggere i warning (nei limiti del possibile)
+-creare i costruttori nelle Interfaccie e nelle Classi assegnate
+-ridefinire la funzione increaseLevel sulle classi assegnate
+
+classi assegnate:
+Davide: -MagicInterface 
+	-Artificiere
+	-Mago
+	-Tank (aspetta un commit con "DIFENCEINTERFACE FATTO")
+
+Filippo: -DpsInterface
+	 -Arcere
+	 -Soldato
+	 -Bersekr
+
+Maria: -HealInterface
+       -Guaritore
+       -Paladino
+       -DefenceInterface
