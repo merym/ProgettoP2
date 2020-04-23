@@ -41,7 +41,10 @@ SOURCES += \
 HEADERS += \
         Vista/mainwindow.h \
     Modello/Interfacce/defenceinterface.h \
-    Modello/artificiere.h
+    Modello/artificiere.h \
+    Modello/mago.h \
+    Modello/Interfacce/magicinterface.h \
+    Modello/Interfacce/personaggio.h
 
 FORMS += \
         Vista/mainwindow.ui

@@ -28,5 +28,5 @@ protected:
     }
 
 public:
-    DpsInterface(XXXXXXXX,int pc): Personaggio(XXXXX), probCritico(pc) {}
+    //DpsInterface(XXXXXXXX,int pc): Personaggio(XXXXX), probCritico(pc) {}
 };

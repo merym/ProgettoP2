@@ -1,55 +1,26 @@
-#include "personaggio.cpp"
+#include "magicinterface.h"
 
-class MagicInterface: virtual public Personaggio{
-private:
-    unsigned int maxMana;	//mana disponibile all'inizio dello scontro per ogni mago (massimo) -> usato da increaseLevel() -> aumenta col livello
+//usato da increaselevel
+void MagicInterface::increaseMaxMana(unsigned int addVal){
+    maxMana = addVal;
+}
 
-    unsigned  int mana;	//mana che si aggiorna ogni volta che si lancia un'abilità; inizialmente uguale a maxMana
+unsigned int MagicInterface::getMaxMana() const {return maxMana;}
 
-protected:
-	//usato da increaselevel
-    virtual void increaseMaxMana(unsigned int addVal){
-        maxMana += addVal;
-	}
+unsigned int MagicInterface::getMana() const {return mana;}
 
-    /*
-    //usato da increaselevel
-	virtual void increaseMaxHealth(){
-        maxHealth = getMaxHealth() + 10*getLevel();	//getMaxHealth ? altrimenti come accedo al campo
-	}
+bool MagicInterface::isThrowable(unsigned int m) const{ //controlla se il mago ha il mana necessario per lanciare l'abilità
+    if(mana < m)
+        return false;
+    return true;
+}
 
-	//usato da increaselevel
-  	virtual void increaseArmor(){
-  		armor = getArmor() + 2*getLevel();
-  	} 
+//aggiorna il mana dopo il lancio di un'abilità
+void MagicInterface::setMana(unsigned int m){
+    mana -= m;
+}
 
-  	//usato da increaselevel
-  	virtual void increaseAttack(){
-  		baseAttack = getBaseAttack() + 8*getLevel();
-  	} 
-    */
-
-public:
-    MagicInterface(unsigned int m): maxMana(m), mana(m) {}
-
-    unsigned int getMaxMana() const {return maxMana;}
-
-    unsigned int getMana() const {return mana;}
-
-    bool isThrowable(unsigned int m) const{ //controlla se il mago ha il mana necessario per lanciare l'abilità
-  		if(mana < m)
-  			return false;
-  		return true;
-  	}
-
-	//aggiorna il mana dopo il lancio di un'abilità
-    void setMana(unsigned int m){
-		mana -= m;
-	}
-
-	//per ripristinare il mana alla fine di uno scontro, anche se non è aumentato di livello
-	void resetMana(){
-		mana = maxMana;
-	}
-};
-//int MagicInterface::maxMana = 100;
+//per ripristinare il mana alla fine di uno scontro, anche se non è aumentato di livello
+void MagicInterface::resetMana(){
+    mana = maxMana;
+}
