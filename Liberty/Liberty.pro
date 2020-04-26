@@ -36,7 +36,8 @@ SOURCES += \
     Modello/soldato.cpp \
     Modello/Interfacce/dpsInterface.cpp \
     Modello/Interfacce/defenceInterface.cpp \
-    Modello/artificiere.cpp
+    Modello/artificiere.cpp \
+    Modello/berserker.cpp
 
 HEADERS += \
         Vista/mainwindow.h \
@@ -44,7 +45,11 @@ HEADERS += \
     Modello/artificiere.h \
     Modello/mago.h \
     Modello/Interfacce/magicinterface.h \
-    Modello/Interfacce/personaggio.h
+    Modello/Interfacce/personaggio.h \
+    Modello/berserker.h \
+    Modello/Interfacce/dpsinterface.h \
+    Modello/arciere.h \
+    Modello/soldato.h
 
 FORMS += \
         Vista/mainwindow.ui

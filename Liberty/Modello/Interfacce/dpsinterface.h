@@ -1,0 +1,25 @@
+#ifndef DPSINTERFACE_H
+#define DPSINTERFACE_H
+
+#include "personaggio.h"
+#include <cstdlib> //per rand()
+#include <ctime> //per time()
+
+//***SIGNIFICATO WARNING?***
+class DpsInterface: virtual public Personaggio{
+private:
+    //***UNSIGNED INT***
+    unsigned int probCritico;
+
+protected:
+    //il metodo per aumentare la probabilit� si chiama INCREASE anche se di fatto decrementa il parametro per farlo.
+    void increaseProbCritico();
+    unsigned int critico() const;
+
+public:
+    //***usa il costruttore standard di personaggio***
+    DpsInterface(unsigned int p=10): probCritico(p) {}
+    virtual ~DpsInterface() {}
+};
+
+#endif // DPSINTERFACE_H
