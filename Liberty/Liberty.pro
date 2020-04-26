@@ -39,31 +39,21 @@ SOURCES += \
     Modello/artificiere.cpp \
     Modello/berserker.cpp \
     Modello/paladino.cpp \
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 89074b06723cc55e2c369033f482c32cc4ba3359
 
 HEADERS += \
         Vista/mainwindow.h \
     Modello/artificiere.h \
     Modello/mago.h \
-    Modello/Interfacce/magicinterface.h \
+    Modello/Interfacce/magicInterface.h \
     Modello/Interfacce/personaggio.h \
     Modello/berserker.h \
-    Modello/Interfacce/dpsinterface.h \
+    Modello/Interfacce/dpsInterface.h \
     Modello/arciere.h \
     Modello/soldato.h \
     Modello/Interfacce/healInterface.h \
     Modello/guaritore.h \
     Modello/paladino.h \
     Modello/Interfacce/defenceInterface.h \
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 89074b06723cc55e2c369033f482c32cc4ba3359
 
 FORMS += \
         Vista/mainwindow.ui
