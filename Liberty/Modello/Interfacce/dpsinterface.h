@@ -5,7 +5,6 @@
 #include <cstdlib> //per rand()
 #include <ctime> //per time()
 
-//***SIGNIFICATO WARNING?***
 class DpsInterface: virtual public Personaggio{
 private:
     //***UNSIGNED INT***
@@ -19,7 +18,7 @@ protected:
 public:
     //***usa il costruttore standard di personaggio***
     DpsInterface(unsigned int p=10): probCritico(p) {}
-    virtual ~DpsInterface() {}
+    virtual ~DpsInterface();
 };
 
 #endif // DPSINTERFACE_H

@@ -1,5 +1,7 @@
 #include "dpsinterface.h"
 
+DpsInterface::~DpsInterface(){}
+
 void DpsInterface::increaseProbCritico(){
     //Check (utile?)
     if(probCritico>2)
