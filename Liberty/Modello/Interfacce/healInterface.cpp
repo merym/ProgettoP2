@@ -1,56 +1,35 @@
-#include "personaggio.cpp"
+#include "healInterface.h"
 
-class HealInterface: virtual public Personaggio{
-private:
-    int blessing; //parte da lvl-1, aumenta per ogni turno di attacco SEMPLICE durante una BATTAGLIA
+void HealInterface::prayForBlessing(){//chiamato da azione determinata da classe derivata, aumenta blessing
+    blessing++;
+}
 
-protected:
-    virtual void prayForBlessing(){//chiamato da azione determinata da classe derivata, aumenta blessing
-        blessing++;
-    }
+void HealInterface::resetBlessing(){
+    blessing=getLevel()-1; // da personaggio
+}
 
-    void resetBlessing(){
-        blessing=getLevel()-1; // da personaggio
-    }
+unsigned int HealInterface::askForBlessing(){//chiamato per usare il blessing accumulato e fare il reset del blessing
+    unsigned int result=blessing;
+    resetBlessing();
+    return result;
+}
 
-    virtual int askForBlessing(){//chiamato per usare il blessing accumulato e fare il reset del blessing
-        int result=blessing;
-        resetBlessing();
-        return result;
-    }
+void HealInterface::increaseBlessing(){//chiamato da increaseLevel->(!) must be VIRTUAL! al salire di livello
+    resetBlessing();//... RIDONDANZA O CHIAREZZA???
+}
 
-    virtual void increaseBlessing(){//chiamato da increaseLevel->(!) must be VIRTUAL! al salire di livello
-        resetBlessing();//... RIDONDANZA O CHIAREZZA???
-    }
+unsigned int HealInterface::getBlessing()const{//ritorna Blessing come VALORE IN LETTURA, usato per fare check di valore
+    return blessing;
+}
 
-public:
-    int getBlessing()const{//ritorna Blessing come VALORE IN LETTURA, usato per fare check di valore
-        return blessing;
-    }
-
-    virtual bool increaseLevel(const int & newExpPoints){
-        bool result= Personaggio::increaseLevel(newExpPoints);//do as normal
-        increaseBlessing();//chiama reset con NEWLevel, in entrambi i casi riporta a "zero" il blessing per la prossima BATTAGLIA
-        return result;
-    }
-
-    /* prima ipotesi
-    virtual int attack(){//usato per accumulare blessing, 1 "preghiera" per un colpo; NB potremmo metterlo in personaggio?
+unsigned int HealInterface::pray(bool use){// può essere usato x accumulare blessing tramite preghiere O per fare "un azione benedetta dalla divinità" azzerando blessing
+    if(!use){// add holy juice to tank
         prayForBlessing();
-        return Personaggio::GetBaseAttack(); //da personaggio
+        return 0;
     }
-    */
-
-    virtual int pray(bool use){// può essere usato x accumulare blessing tramite preghiere O per fare "un azione benedetta dalla divinità" azzerando blessing
-        if(!use){// add holy juice to tank
-            prayForBlessing();
-            return 0;
-        }
-        else{//use holy juice
-            int smite=blessing;//valore da ritornare
-            resetBlessing();
-            return smite;
-        }
+    else{//use holy juice
+        unsigned int smite=blessing;//valore da ritornare
+        resetBlessing();
+        return smite;
     }
-
-};
+}

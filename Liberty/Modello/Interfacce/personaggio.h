@@ -24,6 +24,9 @@ protected:
 
     void setHealth(int damage);
 
+    //NB aggiunta per effettivamente andare a toccare exp
+    void setExp(unsigned int ex);
+
     virtual unsigned int reducedDamageWithArmor(unsigned int damage) const;
 
     //proposta da healIntef
@@ -74,7 +77,7 @@ public:
   bool getDeathState()const;
 
   //gain=hp guarita, divineIntervention=is a REZ or NOT
-  void receiveHealing(unsigned int gain, bool divineIntervention);
+  void receiveHealing(unsigned int gain, bool divineIntervention=false);
 
 };
 #endif // PERSONAGGIO_H
