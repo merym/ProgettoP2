@@ -1,36 +1,29 @@
-#include "personaggio.cpp"
+#include "defenceinterface.h"
 
-class DefenceInterface: virtual public Personaggio{
-private:
-    int turni;
-    unsigned int maxArmor;
-protected:
+const unsigned short int DefenceInterface::maxTurni=3;
 
-    virtual unsigned int reducedDamageWithArmor(unsigned int damage) const {
-        return damage - (damage*maxArmor)/100;
-    }
+unsigned int DefenceInterface::reducedDamageWithArmor(unsigned int damage) const {
+    return damage - (damage*maxArmor)/100;
+}
 
-    virtual void incrementaTurni(){
-      turni=3;
-    }
-    //decrementaturni lo invoca ogni abilit� del personaggio della classe defenceinterface
-    //Turni viene decrementato solo quando il personaggio che ha utlizzato l'abilit� BuffArmor � in uso dall'utente
-    void decrementaTurni(){
-        if(turni!=0){
-        turni--;
-        setMaxArmor(getArmor());
-        }
-    }
-    void setMaxArmor(unsigned int arm){
-        maxArmor=arm;
-    }
+void DefenceInterface::incrementaTurni(){
+  turni=maxTurni;
+}
 
-public:
-    //incrementa l'armatura, se non � disponibile l'abilit� (Turni !=0) restituisce false, altrimenti true
-    virtual bool buffArmor(){
-        if(turni!=0)
-            return false;
-        setMaxArmor(getArmor()+3*getLevel());
-        return true;
+void DefenceInterface::decrementaTurni(){
+    if(turni!=0){
+    turni--;
+    setMaxArmor(getArmor());
     }
-};
+}
+
+void DefenceInterface::setMaxArmor(unsigned int arm){
+    maxArmor=arm;
+}
+
+bool DefenceInterface::buffArmor(){
+    if(turni!=0)
+        return false;
+    setMaxArmor(getArmor()+maxTurni*getLevel());
+    return true;
+}
