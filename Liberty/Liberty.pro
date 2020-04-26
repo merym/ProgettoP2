@@ -36,15 +36,19 @@ SOURCES += \
     Modello/soldato.cpp \
     Modello/Interfacce/dpsInterface.cpp \
     Modello/Interfacce/defenceInterface.cpp \
-    Modello/artificiere.cpp
+    Modello/artificiere.cpp \
+    Modello/paladino.cpp
 
 HEADERS += \
         Vista/mainwindow.h \
-    Modello/Interfacce/defenceinterface.h \
     Modello/artificiere.h \
     Modello/mago.h \
     Modello/Interfacce/magicinterface.h \
-    Modello/Interfacce/personaggio.h
+    Modello/Interfacce/personaggio.h \
+    Modello/Interfacce/healInterface.h \
+    Modello/guaritore.h \
+    Modello/paladino.h \
+    Modello/Interfacce/defenceInterface.h
 
 FORMS += \
         Vista/mainwindow.ui
