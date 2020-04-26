@@ -1,7 +1,7 @@
 #ifndef MAGO_H
 #define MAGO_H
 
-#include "Interfacce/magicInterface.h"
+#include "Interfacce/magicinterface.h"
 
 class Mago: public MagicInterface{
 protected:
@@ -16,14 +16,15 @@ public:
     Mago(QString nome, unsigned int ex): Personaggio(40,20,1,15,"Mago",nome,1), MagicInterface(100){
         while(ex >= 100)
             increaseLevel(ex);
+        setCostoA1(50);
+        setCostoA2(80);
+        setCostoA3(110);
     }
     virtual ~Mago() {}
+
     unsigned int expelliarmus();
     unsigned int expectoPatronum();
     unsigned int avadaKedavra();
 };
-const unsigned int MagicInterface::costoManaAbilita1 = 50;
-const unsigned int MagicInterface::costoManaAbilita2 = 90;
-const unsigned int MagicInterface::costoManaAbilita3 = 130;
 
 #endif // MAGO_H

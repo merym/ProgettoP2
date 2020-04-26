@@ -24,3 +24,20 @@ void MagicInterface::setMana(unsigned int m){
 void MagicInterface::resetMana(){
     mana = maxMana;
 }
+
+
+unsigned int MagicInterface::getCostoA1() const {return costoManaAbilita1;}
+unsigned int MagicInterface::getCostoA2() const {return costoManaAbilita2;}
+unsigned int MagicInterface::getCostoA3() const {return costoManaAbilita3;}
+
+void MagicInterface::setCostoA1(unsigned int c) {
+    costoManaAbilita1 = c;
+}
+
+void MagicInterface::setCostoA2(unsigned int c) {
+    costoManaAbilita2 = c;
+}
+
+void MagicInterface::setCostoA3(unsigned int c) {
+    costoManaAbilita3 = c;
+}

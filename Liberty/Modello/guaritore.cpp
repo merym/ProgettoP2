@@ -16,13 +16,11 @@ protected:
 
 public:
 
-    /*prima ipotesi
     virtual int useBlessing(){//ridef da healIterf
         int smite= HealInteface::useBlessing();//valore da ritornare
         smite= smite *getLevel();
         return smite;
     }
-    */
     //add or get juice
     virtual int pray(bool use){
         if(!use){

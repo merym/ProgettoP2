@@ -52,9 +52,8 @@ public:
                  tipoPersonaggio(t),
                  nome(n),
                  prezzo(p){}
+  virtual ~Personaggio() = default;
 
-
-  virtual ~Personaggio()=0;
   QString getTipoPersonaggio()const;
   QString getNome()const;
   unsigned int getPrezzo() const;

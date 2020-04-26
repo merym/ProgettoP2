@@ -1,7 +1,7 @@
 #ifndef MAGICINTERFACE_H
 #define MAGICINTERFACE_H
 
-#include "personaggio.cpp"
+#include "personaggio.h"
 
 class MagicInterface: virtual public Personaggio{
 private:
@@ -9,9 +9,9 @@ private:
     unsigned int mana;	//mana che si aggiorna ogni volta che si lancia un'abilità; inizialmente uguale a maxMana
     //costo delle abilita' delle classi figlie (mago, artificiere)
 
-    static const unsigned int costoManaAbilita1;
-    static const unsigned int costoManaAbilita2;
-    static const unsigned int costoManaAbilita3;
+    unsigned int costoManaAbilita1;
+    unsigned int costoManaAbilita2;
+    unsigned int costoManaAbilita3;
 protected:
     virtual void increaseMaxMana(unsigned int addVal);
 
@@ -20,15 +20,21 @@ public:
         Personaggio(mH, bA, lv, a, t, n, p), maxMana(m), mana(m) {}*/
     MagicInterface(unsigned int m): maxMana(m), mana(m) {}
     virtual ~MagicInterface() {}
+
     unsigned int getMaxMana() const;
     unsigned int getMana() const;
     bool isThrowable(unsigned int m) const;
     void setMana(unsigned int m);
     void resetMana();
 
-    unsigned int getCostoA1() const {return costoManaAbilita1;}
-    unsigned int getCostoA2() const {return costoManaAbilita2;}
-    unsigned int getCostoA3() const {return costoManaAbilita3;}
+    unsigned int getCostoA1() const;
+    unsigned int getCostoA2() const;
+    unsigned int getCostoA3() const;
+
+    //virtual?
+    virtual void setCostoA1(unsigned int c);
+    virtual void setCostoA2(unsigned int c);
+    virtual void setCostoA3(unsigned int c);
 };
 
 

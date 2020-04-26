@@ -1,8 +1,18 @@
 #include "personaggio.h"
     
-void Personaggio::increaseMaxHealth(unsigned int addVal){ maxHealth+= addVal; health=static_cast<int>(maxHealth);} //usato da increaselevel, RESETTA ANCHE HEALTH AL MAX VALUE
-void Personaggio::increaseArmor(unsigned int addVal){ armor+= addVal;} //usato da increaselevel
-void Personaggio::increaseAttack(unsigned int addVal){ baseAttack+= addVal;} //usato da increaselevel
+void Personaggio::increaseMaxHealth(unsigned int addVal){
+    maxHealth+= addVal;
+    health=static_cast<int>(maxHealth);
+} //usato da increaselevel, RESETTA ANCHE HEALTH AL MAX VALUE
+
+void Personaggio::increaseArmor(unsigned int addVal){
+    armor+= addVal;
+} //usato da increaselevel
+
+void Personaggio::increaseAttack(unsigned int addVal){
+    baseAttack+= addVal;
+} //usato da increaselevel
+
 void Personaggio::setLevel(unsigned int newLevel){
         level += newLevel;
 } //usato da increaselevel (serve ad accedere al campo privato)
