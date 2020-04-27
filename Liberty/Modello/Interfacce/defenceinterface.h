@@ -12,11 +12,13 @@ protected:
 
     virtual unsigned int reducedDamageWithArmor(unsigned int damage) const;
 
+    virtual void increaseMaxArmor(unsigned int valAdd);
     virtual void incrementaTurni();
 
-    //decrementaturni lo invoca ogni abilit� del personaggio della classe defenceinterface
-    //Turni viene decrementato solo quando il personaggio che ha utlizzato l'abilit� BuffArmor � in uso dall'utente
+    //decrementaturni lo invoca ogni abilita del personaggio della classe defenceinterface
+    //Turni viene decrementato solo quando il personaggio che ha utlizzato l'abilita BuffArmor e' in uso dall'utente
     void decrementaTurni();
+    int getTurno();
 
     void setMaxArmor(unsigned int arm);
 
@@ -24,7 +26,7 @@ public:
 
     DefenceInterface(unsigned int m): turni(3), maxArmor(m){}
 
-    //incrementa l'armatura, se non � disponibile l'abilit� (Turni !=0) restituisce false, altrimenti true
+    //incrementa l'armatura, se non e' disponibile l'abilita (Turni !=0) restituisce false, altrimenti true
     virtual bool buffArmor();
 };
 

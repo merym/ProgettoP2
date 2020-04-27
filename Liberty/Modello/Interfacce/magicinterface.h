@@ -19,7 +19,6 @@ public:
     /*MagicInterface(unsigned int mH, unsigned int bA, unsigned int lv, unsigned int a, QString t, QString n, unsigned int p, unsigned int m):
         Personaggio(mH, bA, lv, a, t, n, p), maxMana(m), mana(m) {}*/
     MagicInterface(unsigned int m): maxMana(m), mana(m) {}
-    virtual ~MagicInterface() {}
 
     unsigned int getMaxMana() const;
     unsigned int getMana() const;

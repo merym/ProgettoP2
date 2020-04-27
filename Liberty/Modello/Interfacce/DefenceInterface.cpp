@@ -6,16 +6,22 @@ unsigned int DefenceInterface::reducedDamageWithArmor(unsigned int damage) const
     return damage - (damage*maxArmor)/100;
 }
 
+void DefenceInterface::increaseMaxArmor(unsigned int valAdd){
+    maxArmor = valAdd;
+}
+
 void DefenceInterface::incrementaTurni(){
-  turni=maxTurni;
+    turni=maxTurni;
 }
 
 void DefenceInterface::decrementaTurni(){
     if(turni!=0){
-    turni--;
+        turni--;
     setMaxArmor(getArmor());
     }
 }
+
+int DefenceInterface::getTurno(){return turni;}
 
 void DefenceInterface::setMaxArmor(unsigned int arm){
     maxArmor=arm;
