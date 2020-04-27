@@ -5,7 +5,7 @@
 
 class DefenceInterface: virtual public Personaggio{
 private:
-    int turni;
+    unsigned short int turni;
     unsigned int maxArmor;
     static const unsigned short int maxTurni; //aggiunto perchè il prof consigliava sempre di riconoscere le "costanti di classe" negli esercizi
 protected:
@@ -24,7 +24,11 @@ protected:
 
 public:
 
-    DefenceInterface(unsigned int m): turni(3), maxArmor(m){}
+    DefenceInterface(unsigned int m): turni(3), maxArmor(m){}//NB turni dovrebbe essere zero?
+
+    unsigned int getMaxArmor()const;
+
+    unsigned short int getTurni()const;
 
     //incrementa l'armatura, se non e' disponibile l'abilita (Turni !=0) restituisce false, altrimenti true
     virtual bool buffArmor();

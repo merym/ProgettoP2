@@ -1,4 +1,4 @@
-#include "defenceinterface.h"
+#include "defenceInterface.h"
 
 const unsigned short int DefenceInterface::maxTurni=3;
 
@@ -24,7 +24,16 @@ void DefenceInterface::decrementaTurni(){
 int DefenceInterface::getTurno(){return turni;}
 
 void DefenceInterface::setMaxArmor(unsigned int arm){
-    maxArmor=arm;
+    maxArmor=arm;//NB is different from all other setters...
+}
+
+unsigned int DefenceInterface::getMaxArmor() const{
+    return maxArmor;
+}
+
+unsigned short DefenceInterface::getTurni() const
+{
+    return turni;
 }
 
 bool DefenceInterface::buffArmor(){

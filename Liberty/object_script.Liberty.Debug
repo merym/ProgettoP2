@@ -1,0 +1,13 @@
+debug/main.o
+debug/mainwindow.o
+debug/magicInterface.o
+debug/personaggio.o
+debug/guaritore.o
+debug/mago.o
+debug/arciere.o
+debug/soldato.o
+debug/defenceInterface.o
+debug/artificiere.o
+debug/berserker.o
+debug/paladino.o
+debug/moc_mainwindow.o

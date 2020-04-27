@@ -38,15 +38,26 @@ SOURCES += \
     Modello/Interfacce/defenceInterface.cpp \
     Modello/artificiere.cpp \
     Modello/tank.cpp
+    Modello/berserker.cpp \
+    Modello/paladino.cpp \
 
 HEADERS += \
         Vista/mainwindow.h \
-    Modello/Interfacce/defenceinterface.h \
     Modello/artificiere.h \
     Modello/mago.h \
     Modello/Interfacce/magicinterface.h \
     Modello/Interfacce/personaggio.h \
     Modello/tank.h
+    Modello/Interfacce/magicInterface.h \
+    Modello/Interfacce/personaggio.h \
+    Modello/berserker.h \
+    Modello/Interfacce/dpsInterface.h \
+    Modello/arciere.h \
+    Modello/soldato.h \
+    Modello/Interfacce/healInterface.h \
+    Modello/guaritore.h \
+    Modello/paladino.h \
+    Modello/Interfacce/defenceInterface.h \
 
 FORMS += \
         Vista/mainwindow.ui

@@ -1,37 +1,28 @@
-#include "Modello/Interfacce/dpsInterface.cpp"
+#include "soldato.h"
 
-//derivazione non virtual
-class Soldato: public DpsInterface{
-protected:
-    //NB: metti valori x soldato (non per arcere)
-    bool increaseLevel(const int& newExpPoint){//newExpPoint guadagnati dalla vittoria della battaglia
-        if(newExpPoint + getExpPoint() >= 100){
-            Personaggio::increaseLevel(newExpPoint);
-            increaseMaxHealth(getMaxHealth()+5*getLevel());
-            increaseArmor(getArmor()+3*getLevel());
-            increaseAttack(getBaseAttack()+6*getLevel());
-            increaseProbCritico();
-            return true;
-        }
-        else{
-            return false;
-        }
+bool Soldato::increaseLevel(unsigned int newExpPoint){
+    if(newExpPoint + getExpPoint() >= 100){
+        Personaggio::increaseLevel(newExpPoint);
+        increaseMaxHealth(5*getLevel());
+        increaseArmor(4*getLevel());
+        increaseAttack(5*getLevel());
+        increaseProbCritico();
+        return true;
     }
-
-  public:
-    Soldato(); //i dati come: vita, armor ecc. sono inizializzati nel costruttore che utilizza per� quello della classe personaggio
-    ~Soldato();
-    int pugnoFurtivo(){
-      return 2*getBaseAttack()*critico()+getLevel();
+    else{
+        return false;
     }
+}
 
-    //IL fatto di impedire di usare un metodo per un tot di turni si fa con la GUI
+//IL fatto di impedire di usare un metodo per un tot di turni si fa con la GUI
+unsigned int Soldato::pugnoFurtivo(){
+    return 2*getBaseAttack()*critico()+getLevel();
+}
 
-    int fendente(){
-      return (3*getBaseAttack()*critico()+getLevel())+3;
-    }
+unsigned int Soldato::fendente(){
+    return (3*getBaseAttack()*critico()+getLevel())+3;
+}
 
-    int coltellata(){
-      return 2*getBaseAttack()*critico()+getLevel()*3;
-    }
-};
+unsigned int Soldato::coltellata(){
+    return 2*getBaseAttack()*critico()+getLevel()*3;
+}

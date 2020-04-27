@@ -25,6 +25,10 @@ void Personaggio::setHealth(int damage){//proposta da healInterf:(int+)= guarigi
     }
 }
 
+void Personaggio::setExp(unsigned int ex){
+    expPoint+=ex;
+}
+
 unsigned int Personaggio::reducedDamageWithArmor(unsigned int damage) const{ //restituisce il danno ridotto dall'armatura (in defence interface usa maxarmor, invece che armor)
     return damage - (damage*armor)/100;
 }
@@ -50,11 +54,14 @@ unsigned int Personaggio::getLevel() const{return level;}
 unsigned int Personaggio::getExpPoint() const{return expPoint;}
 unsigned int Personaggio::getArmor() const{return armor;}
 
-//proposta da healInterf->per modificare i campi specifici delle interfaccie deve essere virtuale! && potrebbe ritornare se è avvenuto o no un cambio lvl wt a BOOL
 bool Personaggio::increaseLevel(unsigned int newExpPoint){//newExpPoint guadagnati dalla vittoria della battaglia
     if(newExpPoint + getExpPoint() >= 100){
         setLevel(1);
+        setExp(0);
         return true;
+    }
+    else{
+        setExp(newExpPoint);
     }
     return false;
 }
@@ -68,7 +75,7 @@ void Personaggio::receiveDamage(unsigned int damage){//utilizza SetHealth e Redu
 bool Personaggio::getDeathState() const {return dead;}//in lettura, per il controller
 
 //gain=hp guarita, divineIntervention=is a REZ or NOT
-void Personaggio::receiveHealing(unsigned int gain, bool divineIntervention=false){//chiamato da controller (O da contenitore?) per aumentare Health (hp= hp+gain) tramite setHP
+void Personaggio::receiveHealing(unsigned int gain, bool divineIntervention){//chiamato da controller (O da contenitore?) per aumentare Health (hp= hp+gain) tramite setHP
     if(dead==divineIntervention){//valori concordanti, guarigione NORM o REZ
         setHealth(static_cast<int>(gain));
         if(dead)

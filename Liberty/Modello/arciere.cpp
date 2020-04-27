@@ -1,36 +1,28 @@
-#include "Modello/Interfacce/dpsInterface.cpp"
+#include "arciere.h"
 
-//derivazione non virtual
-class Arciere: public DpsInterface{
-protected:
-    bool increaseLevel(unsigned int newExpPoint){//newExpPoint guadagnati dalla vittoria della battaglia
-      if(newExpPoint + getExpPoint() >= 100){
+bool Arciere::increaseLevel(unsigned int newExpPoint){//newExpPoint guadagnati dalla vittoria della battaglia
+    if(newExpPoint + getExpPoint() >= 100){
         Personaggio::increaseLevel(newExpPoint);
-        increaseMaxHealth(getMaxHealth()+5*getLevel());
-        increaseArmor(getArmor()+3*getLevel());
-        increaseAttack(getBaseAttack()+6*getLevel());
+        increaseMaxHealth(5*getLevel());
+        increaseArmor(3*getLevel());
+        increaseAttack(6*getLevel());
         increaseProbCritico();
         return true;
-      }
-      else {
-          return false;
-      }
     }
-
-  public:
-    Arciere(); //i dati come: vita, armor ecc. sono inizializzati nel costruttore che utilizza per� quello della classe personaggio
-    ~Arciere();
-    int frecciaAppuntita(){
-      return 2*getBaseAttack()*critico()+getLevel();
+    else {
+        return false;
     }
+}
 
-    //IL fatto di impedire di usare un metodo per un tot di turni si fa con la GUI
+//IL fatto di impedire di usare un metodo per un tot di turni si fa con la GUI
+unsigned int Arciere::frecciaAppuntita(){
+    return 2*getBaseAttack()*critico()+getLevel();
+}
 
-    int frecciaInfuocata(){
-      return 3*getBaseAttack()*critico()+getLevel();
-    }
+unsigned int Arciere::frecciaInfuocata(){
+    return 3*getBaseAttack()*critico()+getLevel();
+}
 
-    int frecciaPesante(){
-      return 2*getBaseAttack()*critico()+getLevel()*2;
-    }
-};
+unsigned int Arciere::frecciaPesante(){
+    return 2*getBaseAttack()*critico()+getLevel()*2;
+}

@@ -1,0 +1,13 @@
+release/main.o
+release/mainwindow.o
+release/magicInterface.o
+release/personaggio.o
+release/guaritore.o
+release/mago.o
+release/arciere.o
+release/soldato.o
+release/defenceInterface.o
+release/artificiere.o
+release/berserker.o
+release/paladino.o
+release/moc_mainwindow.o
