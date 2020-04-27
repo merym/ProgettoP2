@@ -36,7 +36,8 @@ SOURCES += \
     Modello/soldato.cpp \
     Modello/Interfacce/dpsInterface.cpp \
     Modello/Interfacce/defenceInterface.cpp \
-    Modello/artificiere.cpp
+    Modello/artificiere.cpp \
+    Modello/tank.cpp
 
 HEADERS += \
         Vista/mainwindow.h \
@@ -44,7 +45,8 @@ HEADERS += \
     Modello/artificiere.h \
     Modello/mago.h \
     Modello/Interfacce/magicinterface.h \
-    Modello/Interfacce/personaggio.h
+    Modello/Interfacce/personaggio.h \
+    Modello/tank.h
 
 FORMS += \
         Vista/mainwindow.ui
